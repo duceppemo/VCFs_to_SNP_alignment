@@ -39,6 +39,22 @@ Script 2 is written in Python.  Anaconda is a highly trusted Python package dist
             
             > source deactivate anaconda400
             
+RAxML is one program outside of the Python environment needed.  It must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture raxmlHPC-PTHREADS-AVX2 can be installed.  raxmlHPC-PTHREADS-AVX2 will significately faster.  Below are brief instructions to install RAxML.
+
+Download RAxML from https://github.com/stamatak/standard-RAxML.  Download to a desired location.
+
+$ git clone https://github.com/stamatak/standard-RAxML.git
+
+$ cd standard-RAxML/
+
+$ make -f Makefile.SSE3.gcc
+
+$ rm *.o
+
+$ sudo ln -s /home/binfadmin/programs/standard-RAxML-master/raxmlHPC-SSE3 /usr/local/bin/raxml # create softlink in PATH
+
+$ which raxml #check that it will be found in $PATH
+            
 
 Go into the python interpretter by typing $ python
 Your version will be Python 3.5.1 |Anaconda 4.0.0 (64-bit).  If it is not, something did not run correctly.
