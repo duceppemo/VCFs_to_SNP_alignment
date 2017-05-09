@@ -1969,7 +1969,7 @@ if names_not_changed:
 
 print ("</body>\n</html>", file=htmlfile)
 #############################################
-
+os.chdir(root)
 zip("starting_files", "starting_files") # zip starting files directory
 shutil.rmtree("starting_files")
 
