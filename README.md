@@ -21,32 +21,44 @@ INSTALL
 =======
 
 ## Python environment setup
-Script 2 is written in Python.  Anaconda is a highly trusted Python package distrubuion platform.  The script is tested using Anaconda 4.0.0.  Other, newer, versions have shown not to work because some modules are incompatiable with Python >3.5.  If running a version other than 4.0.0 a new environment can be set without disrupting your current version (root) install.  Use Anaconda's default installation except when asked if to prepend to PATH choose yes.
+Script 2 is written in Python.  Anaconda is a highly trusted Python package distrubution platform.  The script is tested using Anaconda 4.0.0.  Other, newer, versions have shown not to work because some modules are incompatiable with Python >3.5.  If running a version other than 4.0.0 a new environment can be set without disrupting your current version (root) install.  Use Anaconda's default installation except when asked if to prepend to PATH choose yes.
+
         If a new Anaconda environment is needed without making changes to your current:
+        
             $ conda create -n anaconda400 anaconda=4.0.0 anaconda
+            
             To activate this environment, use:
+            
             > source activate anaconda400
+            
             To deactivate this environment, use:
+            
             > source deactivate anaconda400
+            
 
 Go into the python interpretter by typing $ python
 Your version will be Python 3.5.1 |Anaconda 4.0.0 (64-bit).  If it is not, something did not run correctly.
 Once Anaconda 4.0.0 is installed
+
     $ easy_install ete3 
+    
     $ easy_install pyvcf 
+    
     $ easy_install biopython
+    
     $ pip install xvfbwrapper
+    
 
 ## Dependency setup
 By default script dependencies are expected to be in your home directory.  To install dependencies run the command below with your current working directory set to your home directory.  Check this repo periodically for updates.
-~$ git clone 
 
+~$ git clone https://github.com/stuber/dependencies.git
 
 OVERVIEW
 ========
 
 Importance of step 1.  This is where the SNPs are called.  The final analysis is only going to be as good as the SNPs being called.  It doesn't matter which programs are used, per se, as long as each SNP called (or not called) can be justified and validated.
 
-#OBJECTIVE
+OBJECTIVE
 ==========
 
