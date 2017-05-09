@@ -66,17 +66,17 @@ RAxML is the single program outside of the Python environment that is needed.  I
 
 Download RAxML from https://github.com/stamatak/standard-RAxML.  Download to a desired location.
 
-    $ git clone https://github.com/stamatak/standard-RAxML.git
+    ~$ git clone https://github.com/stamatak/standard-RAxML.git
 
-    $ cd standard-RAxML/
+    ~$ cd standard-RAxML/
 
-    $ make -f Makefile.SSE3.gcc
+    ~$ make -f Makefile.SSE3.gcc
 
-    $ rm *.o
+    ~$ rm *.o
 
-    $ sudo ln -s /home/user/standard-RAxML/raxmlHPC-SSE3 /usr/local/bin/raxml # create softlink in PATH
+    ~$ sudo ln -s /home/user/standard-RAxML/raxmlHPC-SSE3 /usr/local/bin/raxml # create softlink in PATH
 
-    $ which raxml #check that it will be found in $PATH    
+    ~$ which raxml #check that it will be found in $PATH    
 
 ## Dependency setup
 By default script dependencies are expected to be in your home directory.  To install dependencies run the command below with your current working directory set to your home directory.  Check this repo periodically for updates.
@@ -89,17 +89,17 @@ Use files bundled with dependencies to test.  Make working directory that contai
 
 ###Note:  Adding an additional environment
 
-        If a new Anaconda environment is needed without making changes to your current:
+If a new Anaconda environment is needed without making changes to your current:
         
-            $ conda create -n anaconda400 anaconda=4.0.0 anaconda
-            
-            To activate this environment, use:
-            
-            > source activate anaconda400
-            
-            To deactivate this environment, use:
-            
-            > source deactivate anaconda400
+    $ conda create -n anaconda400 anaconda=4.0.0 anaconda
+    
+    To activate this environment, use:
+    
+    > source activate anaconda400
+    
+    To deactivate this environment, use:
+    
+    > source deactivate anaconda400
 
 OVERVIEW
 ========
