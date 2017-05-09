@@ -31,6 +31,10 @@ from ete3 import Tree, TreeStyle, NodeStyle, TextFace, faces, AttrFace
 
 home = os.path.expanduser("~")
 
+#Manage headless displays with Xvfb (X virtual framebuffer
+vdisplay = Xvfb()
+vdisplay.start()
+
 #os.environ["DISPLAY"]=":99"
 #xvfb = subprocess.Popen(['Xvfb', ':99']) # allows not needing to use -X flag when ssh'ing into session.
 
@@ -1364,9 +1368,6 @@ def get_snps(directory):
     # strip off the bottom row: mytable[:-1]
     # get the bottom row: mytable[-1:]
 
-    #Manage headless displays with Xvfb (X virtual framebuffer
-    vdisplay = Xvfb()
-    vdisplay.start()
 # ete3 used to make svg and pdf from trees
 # Anaconda 4.0 is needed to install ete3.  Shown to work with Anaconda 4.1.6, but getcwd error occurs.  Cannot install with Anaconda 4.3
     rooted_tree_pdf = directory + ".pdf"
@@ -1394,7 +1395,7 @@ def get_snps(directory):
         t.render(rooted_tree_pdf, w=5000, tree_style=ts)
         t.render(directory + ".svg", w=500, tree_style=ts)
         os.rename(rooted_tree_path, directory + ".tre")
-    vdisplay.stop()
+
 ###################################################################
 ###################################################################
 ###################################################################
@@ -2035,6 +2036,7 @@ if options.upload:
 
 print ("\n\tDONE\n")
 #xvfb.kill
+vdisplay.stop()
 
 ###############
 # NOTES #######

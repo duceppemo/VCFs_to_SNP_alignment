@@ -22,24 +22,21 @@ INSTALL
 
 ## Python environment setup
 
-Clone script: https://github.com/stuber/VCFs_to_SNP_alignment.git
+Clone script: 
 
-~$ git clone 
-Script 2 is written in Python.  Anaconda is a highly trusted Python package distrubution platform.  The script is tested using Anaconda 4.0.0.  Other, newer, versions have shown not to work because some modules are incompatiable with Python >3.5.  If running a version other than 4.0.0 a new environment can be set without disrupting your current version (root) install.  Use Anaconda's default installation except when asked if to prepend to PATH choose yes.
 
-        If a new Anaconda environment is needed without making changes to your current:
-        
-            $ conda create -n anaconda400 anaconda=4.0.0 anaconda
+~$ git clone https://github.com/stuber/VCFs_to_SNP_alignment.git
+
+
+Script 2 is written in Python.  Anaconda is a highly trusted Python package distrubution platform.  The script is tested using Anaconda 4.0.0.  Other, newer, versions have shown not to work because some modules are incompatiable with Python >3.5.  If running a version other than 4.0.0 a new environment can be set without disrupting your current version (root) install.  See note below for installing an additional Anaconda environment.  Use Anaconda's default installation except when asked if to prepend to PATH choose yes.
+
+Install Anaconda if not already installed.
+
+    $ wget https://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
+    
+    $ bash Anaconda3-4.0.0-Linux-x86_64.sh
             
-            To activate this environment, use:
-            
-            > source activate anaconda400
-            
-            To deactivate this environment, use:
-            
-            > source deactivate anaconda400
-            
-RAxML is one program outside of the Python environment needed.  It must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture raxmlHPC-PTHREADS-AVX2 can be installed.  raxmlHPC-PTHREADS-AVX2 will significately faster.  Below are brief instructions to install RAxML.
+RAxML is the single program outside of the Python environment that is needed.  It must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 will be faster.  Below are brief instructions to install RAxML.
 
 Download RAxML from https://github.com/stamatak/standard-RAxML.  Download to a desired location.
 
@@ -51,7 +48,7 @@ $ make -f Makefile.SSE3.gcc
 
 $ rm *.o
 
-$ sudo ln -s /home/binfadmin/programs/standard-RAxML-master/raxmlHPC-SSE3 /usr/local/bin/raxml # create softlink in PATH
+$ sudo sudo ln -s /home/user/standard-RAxML/raxmlHPC-SSE3 /usr/local/bin/raxml # create softlink in PATH
 
 $ which raxml #check that it will be found in $PATH
             
@@ -73,6 +70,24 @@ Once Anaconda 4.0.0 is installed
 By default script dependencies are expected to be in your home directory.  To install dependencies run the command below with your current working directory set to your home directory.  Check this repo periodically for updates.
 
 ~$ git clone https://github.com/stuber/dependencies.git
+
+## Test
+Use files bundled with dependencies to test.  Make working directory that containing VCFs and call script.
+$ 
+
+###Note:  Adding an additional environment
+
+        If a new Anaconda environment is needed without making changes to your current:
+        
+            $ conda create -n anaconda400 anaconda=4.0.0 anaconda
+            
+            To activate this environment, use:
+            
+            > source activate anaconda400
+            
+            To deactivate this environment, use:
+            
+            > source deactivate anaconda400
 
 OVERVIEW
 ========
