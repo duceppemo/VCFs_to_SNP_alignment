@@ -21,6 +21,10 @@ INSTALL
 =======
 
 ## Python environment setup
+
+Clone script: https://github.com/stuber/VCFs_to_SNP_alignment.git
+
+~$ git clone 
 Script 2 is written in Python.  Anaconda is a highly trusted Python package distrubution platform.  The script is tested using Anaconda 4.0.0.  Other, newer, versions have shown not to work because some modules are incompatiable with Python >3.5.  If running a version other than 4.0.0 a new environment can be set without disrupting your current version (root) install.  Use Anaconda's default installation except when asked if to prepend to PATH choose yes.
 
         If a new Anaconda environment is needed without making changes to your current:
