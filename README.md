@@ -24,10 +24,6 @@ INSTALL
 
 Instructions shown are to install with only user, not root, privileges.  Use root privileges if available or other user PATH setup if desired.
 
-Clone script: 
-
-    ~$ git clone https://github.com/stuber/VCFs_to_SNP_alignment.git
-
 Script 2 is written in Python and must be ran using Python3.  Anaconda is a highly trusted Python package distrubution platform.  If running Python2 a new environment can be set without disrupting your current Python environment.  See note below for installing an additional Anaconda environment.  
 
 Install Anaconda if not already installed.
@@ -45,48 +41,58 @@ Once Anaconda is installed setup Bioconda channels.  Add them in the order shown
     ~$ conda config --add channels r
     ~$ conda config --add channels bioconda
     
-As of Anaconda3-4.3.1 ete3 required python version < 3.6
+As of Anaconda3-4.3.1 ete3 requires python version < 3.6
 
     ~$ conda install python=3.5
     
     ~$ conda install ete3
     ~$ conda update ete3
     
+Additional packages
+
     ~$ conda install pyvcf
     ~$ conda update pyvcf
+    
     ~$ conda install biopython
     ~$ conda update biopython
 
-As of pandas 0.18.1 is required
+Xvfb (short for X virtual framebuffer) must be in your Linux environment.  If not in your environment xvfbwrapper will install but not work.  Xvfb is likely alread install but beware.  Root privileges will be need if it is not available.
+
+Install with system's package manager.  For example:
+    ~$ sudo apt-get install xvfb
+
+Once installed
+    ~$ conda install xvfbwrapper
+    
+As of pandas 0.20.0, pandas 0.18.1 is still required
 
     ~$ conda install pandas=0.18.1
-    
-    ~$ pip install xvfbwrapper
 
-RAxML is the single program outside of the Python environment that is needed.  It must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 will be faster.  Below are brief instructions to install RAxML.
+RAxML must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 will be faster.  The script will first look for raxmlHPC-PTHREADS-AVX2.  If it is not found it will look for raxmlHPC-SSE3, then raxml.  If none of the following is in your PATH the script will fail.
 
-Download RAxML from https://github.com/stamatak/standard-RAxML.  Download to a desired location.
+The easiest way to install RAxML is 
+    ~$ conda install raxml
+    ~$ conda update raxml
 
-    ~$ git clone https://github.com/stamatak/standard-RAxML.git
-
-    ~$ cd standard-RAxML/
-
-    ~$ make -f Makefile.SSE3.gcc
-
-    ~$ rm *.o
-
-    ~$ sudo ln -s /home/user/standard-RAxML/raxmlHPC-SSE3 /usr/local/bin/raxml # create softlink in PATH
-
-    ~$ which raxml #check that it will be found in $PATH    
-
-## Dependency setup
+## Script and dependents
 By default script dependencies are expected to be in your home directory.  To install dependencies run the command below with your current working directory set to your home directory.  Check this repo periodically for updates.
+
+Clone dependencies
 
 ~$ git clone https://github.com/stuber/dependencies.git
 
+Clone script: 
+
+    ~$ git clone https://github.com/stuber/VCFs_to_SNP_alignment.git
+
+Change diretory to VCFs_to_SNP_alignment directory and run to put script in PATH
+
+    VCFs_to_SNP_alignment$ thepath=$(pwd); ln -s ${thepath}/script2.py ~/anaconda3/bin
+    
 ## Test
-Use files bundled with dependencies to test.  Make working directory that containing VCFs and call script.  Call on test files with the command below.
-~/dependencies/vcf_test_files $  /path/to/VCFs_to_SNP_alignment/script2.py -s bovis
+Use files bundled with dependencies to test.  Make working directory that containing VCFs and call script.  With the command above your script should be in your PATH.
+
+    ~/dependencies/vcf_test_files $ script2.py -s bovis
 
 ###Note:  Adding an additional environment
 
@@ -94,11 +100,11 @@ If a new Anaconda environment is needed without making changes to your current:
         
     $ conda create -n anaconda400 anaconda=4.0.0 anaconda
     
-    To activate this environment, use:
+To activate this environment, use:
     
     > source activate anaconda400
     
-    To deactivate this environment, use:
+To deactivate this environment, use:
     
     > source deactivate anaconda400
 
