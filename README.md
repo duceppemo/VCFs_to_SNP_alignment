@@ -24,7 +24,9 @@ INSTALL
 
 Instructions shown are to install with only user, not root, privileges.  Use root privileges if available or other user PATH setup if desired.
 
-Script 2 is written in Python and must be ran using Python3.  Anaconda is a highly trusted Python package distrubution platform.  If running Python2 a new environment can be set without disrupting your current Python environment.  See note below for installing an additional Anaconda environment.  
+Script 2 is written in Python and must be ran using Python3.  
+
+Anaconda is a highly trusted Python package distrubution platform.  If running Python2 a new environment can be set without disrupting your current Python environment.  See note below for installing an additional Anaconda environment.  
 
 Install Anaconda if not already installed.
 
@@ -32,7 +34,7 @@ Install Anaconda if not already installed.
         
     ~$ bash Anaconda3-4.3.1-Linux-x86_64.sh
     
-Use Anaconda's default installation except when asked if to prepend to PATH choose yes.
+Use Anaconda's default installation except when asked if to prepend to PATH, choose yes.
     
 Once Anaconda is installed setup Bioconda channels.  Add them in the order shown below.  Order is important.
 
@@ -45,30 +47,24 @@ As of Anaconda3-4.3.1 ete3 requires python version < 3.6
 
     ~$ conda install python=3.5
     
-    ~$ conda install ete3
-    ~$ conda update ete3
-    
-Additional packages
-
-    ~$ conda install pyvcf
-    ~$ conda update pyvcf
- 
-    ~$ conda install biopython
-    ~$ conda update biopython
+    ~$ conda install ete3 pyvcf biopython
+    ~$ conda update ete3 pyvcf biopython
 
 Xvfb (short for X virtual framebuffer) must be in your Linux environment.  If not in your environment xvfbwrapper will install but not work.  Xvfb is likely alread install but beware.  Root privileges will be need if it is not available.
 
 Install with system's package manager.  For example:
+
     ~$ sudo apt-get install xvfb
 
 Once installed
+
     ~$ conda install xvfbwrapper
     
-As of pandas 0.20.0, pandas 0.18.1 is still required
+pandas 0.18.1 is still required as of pandas 0.20.0
 
     ~$ conda install pandas=0.18.1
 
-RAxML must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 will be faster.  The script will first look for raxmlHPC-PTHREADS-AVX2.  If it is not found it will look for raxmlHPC-SSE3, then raxml.  If none of the following is in your PATH the script will fail.
+RAxML must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  It seems raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 is faster.  The script will first look for raxmlHPC-PTHREADS-AVX2.  If it is not found it will look for raxmlHPC-SSE3, then raxml.  If none are found in your PATH the script will fail.
 
 The easiest way to install RAxML is 
 
@@ -76,7 +72,11 @@ The easiest way to install RAxML is
     ~$ conda update raxml
 
 ## Script and file dependents
-By default script dependencies are expected to be in your home directory.  To install dependencies run the command below with your current working directory set to your home directory.  Check this repo periodically for updates.
+The script will look for for file dependencies to be in your home directory.  
+
+    $ ~/dependencies
+    
+To install dependencies, run the command below with your current working directory set as home directory.  Check this repo periodically for updates.
 
 Clone dependencies
 
@@ -86,16 +86,20 @@ Clone script:
 
     ~$ git clone https://github.com/stuber/VCFs_to_SNP_alignment.git
 
-Change diretory to VCFs_to_SNP_alignment directory and run to put script in PATH
+Change directory to `VCFs_to_SNP_alignment` directory and run to put script in PATH
 
-    VCFs_to_SNP_alignment$ thepath=$(pwd); ln -s ${thepath}/script2.py ~/anaconda3/bin
+    $ thepath=$(pwd); ln -s ${thepath}/script2.py ~/anaconda3/bin
     
 ## Test
 Use files bundled with dependencies to test.  Make working directory that containing VCFs and call script.  With the command above your script should be in your PATH.
 
-    ~/dependencies/vcf_test_files $ script2.py -s bovis
+    $ script2.py -s bovis
 
-Note:  Adding an additional environment
+Debug with
+
+    $ script2.py -s bovis -d
+
+Adding an additional environment
 =======================================
 
 If a new Anaconda environment is needed without making changes to your current:
