@@ -46,21 +46,15 @@ Once Anaconda 4.0.0 is installed
     
     $ pip install xvfbwrapper
 
-<!--    $ easy_install ete3 -->
-<!--    -->
-<!--If PyQt4 is not found when trying to install ete3, install using:-->
-
-    $ pip uninstall ete3 #uninstall
+    $ easy_install ete3 
+    
+If PyQt4 is not found when trying to install ete3, install using:
 
     $ conda install -c etetoolkit ete3=3.0.0b36
-<!---->
-
-<!---->
-<!--    $ conda install pyqt=4-->
-<!--    -->
-<!--    $ easy_install ete3-->
     
-Install ete3 
+There is a know bug with ete3 and a solution is being searched.  The temporary fix has been to include an "-x" option.  ete3 is needed to oupt PDF and SVG files.  If ete3 is working correctly and PDFs and SVG files are desired providing the -x option will output these files, otherwise they will not be output by default.
+    
+Install ete3
             
 RAxML is the single program outside of the Python environment that is needed.  It must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 will be faster.  Below are brief instructions to install RAxML.
 

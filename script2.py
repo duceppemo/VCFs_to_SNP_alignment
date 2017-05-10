@@ -27,7 +27,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email import encoders
-from ete3 import Tree, TreeStyle, NodeStyle, TextFace, faces, AttrFace
 
 home = os.path.expanduser("~")
 
@@ -1400,11 +1399,13 @@ def get_snps(directory):
 
     if options.xserver:
         pdf_out()
-    else:
-        pass
+
 ###################################################################
 ###################################################################
 ###################################################################
+
+if options.xserver:
+    from ete3 import Tree, TreeStyle, NodeStyle, TextFace, faces, AttrFace
 
 test_duplicate() #***FUNCTION CALL
 
