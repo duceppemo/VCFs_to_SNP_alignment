@@ -93,6 +93,7 @@ parser.add_option('-i', '--inhouse', action='store_true', dest='inhouse', help='
 parser.add_option('-u', '--upload', action='store_true', dest='upload', help='upload files to the bioinfo drive')
 parser.add_option('-f', '--filter', action='store_true', dest='filter', help='Find possible positions to filter')
 parser.add_option('-m', '--email', action='store', dest='email', help='email recipients: all, s, tod, jess, suelee, chris, email_address')
+parser.add_option('-x', '--xserver', action='store_true', dest='xserver', help='if functional ete3 provides pdf and svg of tree')
 
 (options, args) = parser.parse_args()
 print ("SET OPTIONS: ")
@@ -1368,34 +1369,39 @@ def get_snps(directory):
     # strip off the bottom row: mytable[:-1]
     # get the bottom row: mytable[-1:]
 
-# ete3 used to make svg and pdf from trees
-# Anaconda 4.0 is needed to install ete3.  Shown to work with Anaconda 4.1.6, but getcwd error occurs.  Cannot install with Anaconda 4.3
-    rooted_tree_pdf = directory + ".pdf"
-    rooted_tree_svg = directory + ".svg"
-    rooted_tree_path = "RAxML_bestTree.raxml.tre"
-    if os.path.isfile("RAxML_bestTree.raxml.tre"):
-        t = Tree(rooted_tree_path) #loads tree file
-        ts = TreeStyle()
-        for n in t.traverse():
-            nstyle = NodeStyle()
-            nstyle["size"] = 0 #removes dots from tree
-            n.set_style(nstyle)
-        def mylayout(node):
-            if node.is_leaf():
-                nameFace = AttrFace("name", fsize=9) #sets font size of leaves
-                faces.add_face_to_node(nameFace, node, 0, position="branch-right")
-        ts.layout_fn = mylayout #using custom layout above
-        ts.show_leaf_name = False #using custom leaf size, so this is disabled
-        ts.scale = 1000 #length of branches
-        ts.branch_vertical_margin = 5 #spacing between branches
-        ts.margin_left = 100
-        ts.margin_right = 100
-        ts.margin_top = 100
-        ts.margin_bottom = 100
-        t.render(rooted_tree_pdf, w=5000, tree_style=ts)
-        t.render(directory + ".svg", w=500, tree_style=ts)
-        os.rename(rooted_tree_path, directory + ".tre")
+    def pdf_out():
+        # ete3 used to make svg and pdf from trees
+        # Anaconda 4.0 is needed to install ete3.  Shown to work with Anaconda 4.1.6, but getcwd error occurs.  Cannot install with Anaconda 4.3
+        rooted_tree_pdf = directory + ".pdf"
+        rooted_tree_svg = directory + ".svg"
+        rooted_tree_path = "RAxML_bestTree.raxml.tre"
+        if os.path.isfile("RAxML_bestTree.raxml.tre"):
+            t = Tree(rooted_tree_path) #loads tree file
+            ts = TreeStyle()
+            for n in t.traverse():
+                nstyle = NodeStyle()
+                nstyle["size"] = 0 #removes dots from tree
+                n.set_style(nstyle)
+            def mylayout(node):
+                if node.is_leaf():
+                    nameFace = AttrFace("name", fsize=9) #sets font size of leaves
+                    faces.add_face_to_node(nameFace, node, 0, position="branch-right")
+            ts.layout_fn = mylayout #using custom layout above
+            ts.show_leaf_name = False #using custom leaf size, so this is disabled
+            ts.scale = 1000 #length of branches
+            ts.branch_vertical_margin = 5 #spacing between branches
+            ts.margin_left = 100
+            ts.margin_right = 100
+            ts.margin_top = 100
+            ts.margin_bottom = 100
+            t.render(rooted_tree_pdf, w=5000, tree_style=ts)
+            t.render(directory + ".svg", w=500, tree_style=ts)
+            os.rename(rooted_tree_path, directory + ".tre")
 
+    if options.xserver:
+        pdf_out()
+    else:
+        pass
 ###################################################################
 ###################################################################
 ###################################################################
