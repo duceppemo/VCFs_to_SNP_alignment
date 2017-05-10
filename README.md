@@ -22,13 +22,13 @@ INSTALL
 
 ## Python environment setup
 
-Clone script: 
+Instructions shown are to install with only user, not root, privileges.  Use root privileges if available or other user PATH setup if desired.
 
+Clone script: 
 
     ~$ git clone https://github.com/stuber/VCFs_to_SNP_alignment.git
 
-
-Script 2 is written in Python.  Anaconda is a highly trusted Python package distrubution platform.  The script is tested using Anaconda 4.0.0.  Newer versions of Anaconda have shown to not work because some modules are incompatiable with Python >3.5.  If running a version other than 4.0.0 a new environment can be set without disrupting your current version (root) install.  See note below for installing an additional Anaconda environment.  Use Anaconda's default installation except when asked if to prepend to PATH choose yes.
+Script 2 is written in Python and must be ran using Python3.  Anaconda is a highly trusted Python package distrubution platform.  If running Python2 a new environment can be set without disrupting your current Python environment.  See note below for installing an additional Anaconda environment.  
 
 Install Anaconda if not already installed.
 
@@ -36,7 +36,9 @@ Install Anaconda if not already installed.
         
     ~$ bash Anaconda3-4.3.1-Linux-x86_64.sh
     
-Once Anaconda is installed setup Bioconda channels.  Order is important.  Add them in the order shown below.
+Use Anaconda's default installation except when asked if to prepend to PATH choose yes.
+    
+Once Anaconda is installed setup Bioconda channels.  Add them in the order shown below.  Order is important.
 
     ~$ conda config --add channels conda-forge
     ~$ conda config --add channels defaults
@@ -55,9 +57,12 @@ As of Anaconda3-4.3.1 ete3 required python version < 3.6
     ~$ conda install biopython
     ~$ conda update biopython
 
+As of pandas 0.18.1 is required
+
+    ~$ conda install pandas=0.18.1
+    
     ~$ pip install xvfbwrapper
 
-                
 RAxML is the single program outside of the Python environment that is needed.  It must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 will be faster.  Below are brief instructions to install RAxML.
 
 Download RAxML from https://github.com/stamatak/standard-RAxML.  Download to a desired location.
