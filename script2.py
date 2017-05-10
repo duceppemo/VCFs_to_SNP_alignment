@@ -30,10 +30,6 @@ from email import encoders
 
 home = os.path.expanduser("~")
 
-#Manage headless displays with Xvfb (X virtual framebuffer
-vdisplay = Xvfb()
-vdisplay.start()
-
 #os.environ["DISPLAY"]=":99"
 #xvfb = subprocess.Popen(['Xvfb', ':99']) # allows not needing to use -X flag when ssh'ing into session.
 
@@ -1405,6 +1401,9 @@ def get_snps(directory):
 ###################################################################
 
 if options.xserver:
+    #Manage headless displays with Xvfb (X virtual framebuffer
+    vdisplay = Xvfb()
+    vdisplay.start()
     from ete3 import Tree, TreeStyle, NodeStyle, TextFace, faces, AttrFace
 
 test_duplicate() #***FUNCTION CALL
@@ -2043,7 +2042,8 @@ if options.upload:
 
 print ("\n\tDONE\n")
 #xvfb.kill
-vdisplay.stop()
+if options.xserver:
+    vdisplay.stop()
 
 ###############
 # NOTES #######
