@@ -52,7 +52,7 @@ Additional packages
 
     ~$ conda install pyvcf
     ~$ conda update pyvcf
-    
+ 
     ~$ conda install biopython
     ~$ conda update biopython
 
@@ -71,15 +71,16 @@ As of pandas 0.20.0, pandas 0.18.1 is still required
 RAxML must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 will be faster.  The script will first look for raxmlHPC-PTHREADS-AVX2.  If it is not found it will look for raxmlHPC-SSE3, then raxml.  If none of the following is in your PATH the script will fail.
 
 The easiest way to install RAxML is 
+
     ~$ conda install raxml
     ~$ conda update raxml
 
-## Script and dependents
+## Script and file dependents
 By default script dependencies are expected to be in your home directory.  To install dependencies run the command below with your current working directory set to your home directory.  Check this repo periodically for updates.
 
 Clone dependencies
 
-~$ git clone https://github.com/stuber/dependencies.git
+    ~$ git clone https://github.com/stuber/dependencies.git
 
 Clone script: 
 
@@ -94,7 +95,8 @@ Use files bundled with dependencies to test.  Make working directory that contai
 
     ~/dependencies/vcf_test_files $ script2.py -s bovis
 
-###Note:  Adding an additional environment
+Note:  Adding an additional environment
+=======================================
 
 If a new Anaconda environment is needed without making changes to your current:
         
