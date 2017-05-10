@@ -32,30 +32,32 @@ Script 2 is written in Python.  Anaconda is a highly trusted Python package dist
 
 Install Anaconda if not already installed.
 
-    ~$ wget https://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh
+    ~$ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
+        
+    ~$ bash Anaconda3-4.3.1-Linux-x86_64.sh
     
-    ~$ bash Anaconda3-4.0.0-Linux-x86_64.sh
-    
-Go into the python interpretter by typing $ python
-Your version will be Python 3.5.1 |Anaconda 4.0.0 (64-bit).  If it is not, something did not run correctly.
-Once Anaconda 4.0.0 is installed
+Once Anaconda is installed setup Bioconda channels.  Order is important.  Add them in the order shown below.
 
-    $ easy_install pyvcf 
+    ~$ conda config --add channels conda-forge
+    ~$ conda config --add channels defaults
+    ~$ conda config --add channels r
+    ~$ conda config --add channels bioconda
     
-    $ easy_install biopython
-    
-    $ pip install xvfbwrapper
+As of Anaconda3-4.3.1 ete3 required python version < 3.6
 
-    $ easy_install ete3 
+    ~$ conda install python=3.5
     
-If PyQt4 is not found when trying to install ete3, install using:
+    ~$ conda install ete3
+    ~$ conda update ete3
+    
+    ~$ conda install pyvcf
+    ~$ conda update pyvcf
+    ~$ conda install biopython
+    ~$ conda update biopython
 
-    $ conda install -c etetoolkit ete3=3.0.0b36
-    
-There is a know bug with ete3 and a solution is being searched.  The temporary fix has been to include an "-x" option.  ete3 is needed to oupt PDF and SVG files.  If ete3 is working correctly and PDFs and SVG files are desired providing the -x option will output these files, otherwise they will not be output by default.
-    
-Install ete3
-            
+    ~$ pip install xvfbwrapper
+
+                
 RAxML is the single program outside of the Python environment that is needed.  It must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  In my experience installing raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 will be faster.  Below are brief instructions to install RAxML.
 
 Download RAxML from https://github.com/stamatak/standard-RAxML.  Download to a desired location.
