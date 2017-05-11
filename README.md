@@ -30,12 +30,12 @@ Anaconda is a highly trusted Python package distrubution platform.  If running P
 
 Install Anaconda if not already installed.  Tested using Anaconda3-4.3.1, or try the latest at: https://www.continuum.io/downloads
 
-Mac OS X
+On Mac OS X
 
     ~$ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-MacOSX-x86_64.sh
     ~$ bash Anaconda3-4.3.1-MacOSX-x86_64.sh
 
-Linux
+On Linux
 
     ~$ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh        
     ~$ bash Anaconda3-4.3.1-Linux-x86_64.sh
@@ -56,17 +56,17 @@ As of Anaconda3-4.3.1 ete3 requires python version < 3.6
     ~$ conda install ete3 pyvcf biopython
     ~$ conda update ete3 pyvcf biopython
 
-Xvfb (short for X virtual framebuffer) is a display server implementing the X11 display server protocol and must be in your environment to generate PDFs SVG tree files.  If not in your environment xvfbwrapper will install but not work.  Xvfb is likely already install but beware.  Root privileges will be need if it is not available.  It's available on Mac OS X via XQuartz and Linux via your package manager.
+Xvfb (short for X virtual framebuffer) is a display server implementing the X11 display server protocol and must be in your environment to generate PDFs and SVG tree files.  If not in your environment xvfbwrapper will install but not work.  Xvfb is likely already install but beware.  Root privileges will be need if it is not yet in your environment.  It's available on Mac OS X via XQuartz and Linux via your package manager.
 
 Using Xvfb is an unfortuante necessity.  Any feedback to improve the portablity generating PDF and SVG files will be appreciated.  Xvfb has been finicky.   Install using pip on Mac OS X and conda on Linux.
 
-Mac OS X
+On Mac OS X
 
 Install XQuartz https://www.xquartz.org
 
-    pip install xvfbwrapper
+    ~$ pip install xvfbwrapper
 
-Linux
+On Linux
 
     ~$ sudo apt-get install xvfb
     ~$ conda install xvfbwrapper
@@ -75,9 +75,9 @@ pandas 0.18.1 is required as of pandas 0.20.0
 
     ~$ conda install pandas=0.18.1
 
-RAxML must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  It seems raxmlHPC-SSE3 is the most universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 is faster.  The script will first look for raxmlHPC-PTHREADS-AVX2.  If it is not found it will look for raxmlHPC-SSE3, then raxml.  If none are found in your PATH the script will fail.
+RAxML must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  It seems raxmlHPC-SSE3 is the most system universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 is faster.  The script will first look for raxmlHPC-PTHREADS-AVX2.  If it is not found it will look for raxmlHPC-SSE3, then raxml.  If none are found in your PATH the script will fail.
 
-The easiest way to install RAxML is 
+If RAxML is not already installed the fastest way to install is:
 
     ~$ conda install raxml
     ~$ conda update raxml
@@ -87,7 +87,7 @@ The script will look in your home directory for file dependencies.
 
     $ ~/dependencies
     
-To install dependencies, run the command below with your current working directory set as your home directory.  Check this repo periodically for updates.
+To install dependencies, run the command below with your home directory set as your current working directory.  Check this repo periodically for updates.
 
 Clone dependencies
 
@@ -97,7 +97,7 @@ Clone script:
 
     ~$ git clone https://github.com/stuber/VCFs_to_SNP_alignment.git
 
-Change directory to `VCFs_to_SNP_alignment` directory and run line below to put script in PATH
+Change directory to `VCFs_to_SNP_alignment` and run line below to put script in your PATH.
 
     $ thepath=$(pwd); ln -s ${thepath}/script2.py ~/anaconda3/bin
     
