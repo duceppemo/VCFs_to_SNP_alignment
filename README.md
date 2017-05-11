@@ -22,7 +22,7 @@ INSTALL
 
 ## Python environment setup
 
-Instructions shown are to install with only user, not root, privileges.  Use root privileges if available or other user PATH setup if desired.
+Instructions shown are to install with user, not root, privileges.  Use root privileges if available or with another user PATH setup if desired.
 
 Script 2 is written in Python and must be ran using Python3.  
 
@@ -30,7 +30,7 @@ Anaconda is a highly trusted Python package distrubution platform.  If running P
 
 Install Anaconda if not already installed.  Tested using Anaconda3-4.3.1, or try the latest at: https://www.continuum.io/downloads
 
-MacOSX
+Mac OS X
 
     ~$ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-MacOSX-x86_64.sh
     ~$ bash Anaconda3-4.3.1-MacOSX-x86_64.sh
@@ -56,17 +56,22 @@ As of Anaconda3-4.3.1 ete3 requires python version < 3.6
     ~$ conda install ete3 pyvcf biopython
     ~$ conda update ete3 pyvcf biopython
 
-Xvfb (short for X virtual framebuffer) must be in your Linux environment.  If not in your environment xvfbwrapper will install but not work.  Xvfb is likely alread install but beware.  Root privileges will be need if it is not available.
+Xvfb (short for X virtual framebuffer) is a display server implementing the X11 display server protocol and must be in your environment to generate PDFs SVG tree files.  If not in your environment xvfbwrapper will install but not work.  Xvfb is likely already install but beware.  Root privileges will be need if it is not available.  It's available on Mac OS X via XQuartz and Linux via your package manager.
 
-Install with system's package manager.  For example:
+Using Xvfb is an unfortuante necessity.  Any feedback to improve the portablity generating PDF and SVG files will be appreciated.  Xvfb has been finicky.   Install using pip on Mac OS X and conda on Linux.
+
+Mac OS X
+
+Install XQuartz https://www.xquartz.org
+
+    pip install xvfbwrapper
+
+Linux
 
     ~$ sudo apt-get install xvfb
-
-Once installed
-
     ~$ conda install xvfbwrapper
     
-pandas 0.18.1 is still required as of pandas 0.20.0
+pandas 0.18.1 is required as of pandas 0.20.0
 
     ~$ conda install pandas=0.18.1
 
@@ -78,11 +83,11 @@ The easiest way to install RAxML is
     ~$ conda update raxml
 
 ## Script and file dependents
-The script will look for for file dependencies to be in your home directory.  
+The script will look in your home directory for file dependencies.  
 
     $ ~/dependencies
     
-To install dependencies, run the command below with your current working directory set as home directory.  Check this repo periodically for updates.
+To install dependencies, run the command below with your current working directory set as your home directory.  Check this repo periodically for updates.
 
 Clone dependencies
 
@@ -92,7 +97,7 @@ Clone script:
 
     ~$ git clone https://github.com/stuber/VCFs_to_SNP_alignment.git
 
-Change directory to `VCFs_to_SNP_alignment` directory and run to put script in PATH
+Change directory to `VCFs_to_SNP_alignment` directory and run line below to put script in PATH
 
     $ thepath=$(pwd); ln -s ${thepath}/script2.py ~/anaconda3/bin
     
