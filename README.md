@@ -31,10 +31,12 @@ Anaconda is a highly trusted Python package distrubution platform.  If running P
 Install Anaconda if not already installed.  Tested using Anaconda3-4.3.1, or try the latest at: https://www.continuum.io/downloads
 
 MacOSX
+
     ~$ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-MacOSX-x86_64.sh
     ~$ bash Anaconda3-4.3.1-MacOSX-x86_64.sh
 
 Linux
+
     ~$ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh        
     ~$ bash Anaconda3-4.3.1-Linux-x86_64.sh
     
