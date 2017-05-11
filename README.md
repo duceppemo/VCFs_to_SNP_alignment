@@ -43,7 +43,7 @@ On Linux
     
 Use Anaconda's default installation except when asked if to, "prepend to PATH", choose yes.
     
-Once Anaconda is installed setup Bioconda channels.  Add them in the order shown below.  Order is important.
+Once Anaconda is installed close and reopen terminal and setup Bioconda channels.  Add them in the order shown below.  Order is important.
 
     ~$ conda config --add channels conda-forge
     ~$ conda config --add channels defaults
@@ -59,7 +59,7 @@ As of Anaconda3-4.3.1 ete3 requires python version < 3.6
 
 Xvfb (short for X virtual framebuffer) is a display server implementing the X11 display server protocol and must be in your environment to generate PDF and SVG tree files.  If X11 is not in your environment xvfbwrapper will install but not work.  Xvfb is likely already install but beware.  Root privileges will be needed if it is not yet in your environment.  It's available on Mac OS X via XQuartz and Linux via your package manager.
 
-Note, Xvfb is finicky.  Using Xvfb is an unfortuante necessity.  Any feedback to improve the portablity generating PDF and SVG files will be appreciated.   On Mac OS X install using pip and on Linux use conda.
+Note, Xvfb is finicky.  Using Xvfb is an unfortuante necessity.  Any feedback to improve the portablity generating PDF and SVG files will be appreciated.   On Mac OS X install using pip and on Linux use conda.  On Mac after following instructions below if error “Xvfb did not start”, then restart XQuartz application before running the script again.
 
 On Mac OS X
 
@@ -69,7 +69,11 @@ Install XQuartz https://www.xquartz.org then:
 
 On Linux
 
+    Debian
     ~$ sudo apt-get install xvfb
+    CentOS
+    ~$ sudo yum install xorg-x11-server-Xvfb
+    
     ~$ conda install xvfbwrapper
     
 pandas 0.18.1 is required as of pandas 0.20.0
@@ -100,10 +104,12 @@ Clone script:
 
 Change directory to `VCFs_to_SNP_alignment` and run line below to put script in your PATH.
 
-    $ thepath=$(pwd); ln -s ${thepath}/script2.py ~/anaconda3/bin
+    ~$ $HOME/VCFtoSNP_alignment/script2.py ~/anaconda3/bin
     
 ## Test
-Use files bundled with dependencies to test.  Make working directory that containing VCFs and call script.  With the command above your script should be in your PATH.
+Use files bundled with dependencies to test.  Make working directory that containing VCFs and call script.
+
+    ~$ cd ./dependencies/vcf_test_files/bovis
 
 For list of options:
     
@@ -113,7 +119,7 @@ If running bovis VCFs, run the following:
 
     $ script2.py -s bovis
 
-Debug with
+To debug or when running with only 1 core:
 
     $ script2.py -s bovis -d
 
