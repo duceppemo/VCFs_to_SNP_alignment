@@ -28,10 +28,14 @@ Script 2 is written in Python and must be ran using Python3.
 
 Anaconda is a highly trusted Python package distrubution platform.  If running Python2 a new environment can be set without disrupting your current Python environment.  See note below for installing an additional Anaconda environment.  
 
-Install Anaconda if not already installed.
+Install Anaconda if not already installed.  Tested using Anaconda3-4.3.1, or try the latest at: https://www.continuum.io/downloads
 
-    ~$ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
-        
+MacOSX
+    ~$ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-MacOSX-x86_64.sh
+    ~$ bash Anaconda3-4.3.1-MacOSX-x86_64.sh
+
+Linux
+    ~$ wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh        
     ~$ bash Anaconda3-4.3.1-Linux-x86_64.sh
     
 Use Anaconda's default installation except when asked if to prepend to PATH, choose yes.
