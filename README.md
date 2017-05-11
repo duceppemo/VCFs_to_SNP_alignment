@@ -104,6 +104,12 @@ Change directory to `VCFs_to_SNP_alignment` and run line below to put script in 
 ## Test
 Use files bundled with dependencies to test.  Make working directory that containing VCFs and call script.  With the command above your script should be in your PATH.
 
+For list of options:
+    
+    $ script2.py -h
+    
+For example if running bovis VCF, run the following:
+
     $ script2.py -s bovis
 
 Debug with
