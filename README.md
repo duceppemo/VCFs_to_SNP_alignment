@@ -104,7 +104,7 @@ Clone script:
 
 Change directory to `VCFs_to_SNP_alignment` and run line below to put script in your PATH.
 
-    ~$ $HOME/VCFtoSNP_alignment/script2.py ~/anaconda3/bin
+    ~$ cp $HOME/VCFs_to_SNP_alignment/script2.py ~/anaconda3/bin
     
 ## Test
 Use files bundled with dependencies to test.  Make working directory that containing VCFs and call script.
