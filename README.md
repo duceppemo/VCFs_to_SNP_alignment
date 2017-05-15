@@ -43,7 +43,14 @@ On Linux
     
 Use Anaconda's default installation except when asked if to, "prepend to PATH", choose yes.
     
-Once Anaconda is installed close and reopen terminal and setup Bioconda channels.  Add them in the order shown below.  Order is important.
+Once Anaconda is installed close and reopen terminal.
+
+Create a virtual environment to install the pipeline and it's requirement without breaking your other software requirements:
+
+    ~$ conda create -n snp_analysis python=3.5
+    ~$ source activate snp_analysis
+
+Setup Bioconda channels.  Add them in the order shown below.  Order is important.
 
     ~$ conda config --add channels conda-forge
     ~$ conda config --add channels defaults
@@ -69,16 +76,11 @@ Install XQuartz https://www.xquartz.org then:
 
 On Linux
 
-    Debian
-    ~$ sudo apt-get install xvfb
-    CentOS
-    ~$ sudo yum install xorg-x11-server-Xvfb
     
-    ~$ conda install xvfbwrapper
+    ~$ sudo apt-get install xvfb  # Debian (Ubuntu)   
+    ~$ sudo yum install xorg-x11-server-Xvfb  # CentOS
     
-pandas 0.18.1 is required as of pandas 0.20.0
-
-    ~$ conda install pandas=0.18.1
+    ~$ conda install xlrd xlsxwriter xvfbwrapper pandas=0.18.1
 
 RAxML must be in your PATH as: raxmlHPC-SSE3, raxmlHPC-PTHREADS-AVX2, or raxml.  It seems raxmlHPC-SSE3 is the most system universal but if you have the correct computer architecture running raxmlHPC-PTHREADS-AVX2 is faster.  The script will first look for raxmlHPC-PTHREADS-AVX2.  If it is not found it will look for raxmlHPC-SSE3, then raxml.  If none are found in your PATH the script will fail.
 
@@ -122,19 +124,9 @@ If running bovis VCFs, run the following:
 To debug or when running with only 1 core:
 
     $ script2.py -s bovis -d
-
-Adding an additional environment
-=======================================
-
-If a new Anaconda environment is needed without making changes to your current:
-        
-    $ conda create -n anaconda400 anaconda=4.0.0 anaconda
     
-To activate this environment, use:
     
-    > source activate anaconda400
-    
-To deactivate this environment, use:
+To deactivate virtual environment, use:
     
     > source deactivate anaconda400
 
