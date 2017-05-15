@@ -1018,7 +1018,7 @@ def get_snps(directory):
             ave_map_value = ave_map[absolute_positon]
             max_map_value = max_map[absolute_positon]
             print ("%s, max_qual_value: %s, ave_qual_value: %s, max_map_value: %s, ave_map_value: %s" % (absolute_positon, max_qual_value, ave_qual_value, max_map_value, ave_map_value))
-            if max_qual_value < 1300 and ave_qual_value < 800 and max_map_value < 58 and ave_map_value < 58:
+            if max_qual_value < 1300 and ave_qual_value < 800 and max_map_value < 58 and ave_map_value < 40:
                 print ("%s, max_qual_value: %s, ave_qual_value: %s, max_map_value: %s, ave_map_value: %s" % (absolute_positon, max_qual_value, ave_qual_value, max_map_value, ave_map_value), file=write_out_details)
                 print (absolute_positon, file=write_out_positions)
         write_out_positions.close()
