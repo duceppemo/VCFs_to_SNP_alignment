@@ -40,28 +40,26 @@ vdisplay.start()
 root = str(os.getcwd())
 error_list = []
 
-try:
-    subprocess.call("raxml")
-    sys_raxml = "raxml"
-    print ("%s found" % sys_raxml)
-except OSError:
-    print ("looking for RAxML")
-    try:
-        subprocess.call("raxmlHPC-SSE3")
-        sys_raxml = "raxmlHPC-SSE3"
-        print ("%s found" % sys_raxml)
-    except OSError:
-        print ("looking for RAxML")
-        try:
-            subprocess.call("raxmlHPC-PTHREADS-AVX2")
-            sys_raxml = "raxmlHPC-PTHREADS-AVX2"
-            print ("RAxML found")
-        except OSError:
-            print ("#####RAxML is not in you PATH")
-            print ("#####See help page for support")
-            sys.exit(0)
+print ("Looking for RAxML")
 
-print ("\n\nRAxML found in $PATH as: %s" % sys_raxml)
+# From fastest to slowest
+raxml_list = [ 'raxmlHPC-PTHREADS-AVX2', 'raxmlHPC-PTHREADS-AVX', 'raxmlHPC-PTHREADS-SSE3',
+               'raxmlHPC-AVX2', 'raxmlHPC-AVX', 'raxmlHPC-SSE3', 'raxml' ]
+
+my_raxml = ''
+
+for v in raxml_list:
+    try:
+        subprocess.call(v,  stdout=open(os.devnull, 'wb'))
+        my_raxml = v
+        print ("%s will be used" % my_raxml)
+    except OSError:
+        continue
+
+if not my_raxml:
+    print ("#####Could not find RAxML on your system")
+    print ("#####See help page for support")
+    sys.exit(0)
 
 #set cpu usage
 cpu_count = multiprocessing.cpu_count()
